@@ -1,0 +1,85 @@
+<div class="row mt-2">
+  <div class="col-md-12  col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <input #input (keyup)="buscar(input.value)" type="text" class="form-control" placeholder="Buscar Usuarios">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12  col-lg-8">
+    <div *ngIf="cargando" class=" alert alert-warning text-center">
+      <strong>
+        Cargando
+      </strong>
+      <br>
+      <i class="fas fa-sync-alt fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor..</span>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Usuarios (<small>{{totalRegistros}}</small>)</h3>
+        <table *ngIf="!cargando" class="table centrado table-hover">
+          <thead>
+            <tr>
+              <th class="align-middle">Imagen</th>
+              <th class="align-middle">Nombre</th>
+              <th class="align-middle">Correo</th>
+              <th class="align-middle text-center">Rol</th>
+              <th class="align-middle">Activo</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let usuario of usuarios">
+              <td class="text-center">
+                <img class="miniatura" [src]="usuario.img! | imagen:'usuarios'" alt="">
+              </td>
+              <td>
+                {{usuario.nombre}}
+              </td>
+              <td class="text-center">
+                {{usuario.email}}
+              </td>
+              <td class="text-center">
+                {{usuario.role}}
+              </td>
+              <td class="text-center">
+                <h5 *ngIf="usuario.activo" class="badge badge-success">Si</h5>
+                <h5 *ngIf="!usuario.activo" class="badge badge-danger">No</h5>
+              </td>
+
+              <td class="d-flex">
+                <button class="btn btn-primary">
+                  <a class="boton-catalogo" [routerLink]="['/usuarios/editar',usuario._id]">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </button>
+                <button class="btn btn-danger">
+                  <a class="boton-catalogo" (click)="eliminarUsuario(usuario)">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="anterior()" class="btn btn-secondary mr-2">
+          Anterior
+        </button>
+        <button (click)="siguiente()" class="btn btn-secondary">
+          Siguiente
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,94 @@
+<div class="row mt-2">
+  <div class="col-md-12  col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <input #input (keyup)="buscar(input.value)" type="text" class="form-control" placeholder="Buscar Sub Productos">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12  col-lg-8">
+    <div *ngIf="cargando" class=" alert alert-warning text-center">
+      <strong>
+        Cargando
+      </strong>
+      <br>
+      <i class="fas fa-sync-alt fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor..</span>
+    </div>
+  </div>
+</div>
+
+
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="text-right">
+          <button type="button" class="btn btn-success">
+            <a class="boton-catalogo" [routerLink]="['/subproductos/agregar']">
+              <i class="fas fa-plus"></i>
+              Sub Producto
+            </a>
+          </button>
+        </div>
+
+        <h3 class="card-title">Sub Productos (<small>{{totalRegistros}}</small>)</h3>
+        <table *ngIf="!cargando" class="table table-hover">
+          <thead>
+            <tr>
+              <th class="align-middle">Descripción</th>
+              <th class="align-middle">Costo</th>
+              <th class="align-middle text-center">Unidad de Medida</th>
+              <th class="align-middle text-center">Precio</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let subProducto of subProductos">
+              <td>
+                {{subProducto.descripcion}}
+              </td>
+              <td class="text-center">
+                {{subProducto.costo |currency}}
+              </td>
+              <td class="text-center">
+                {{subProducto.unidadMedida}}
+              </td>
+              <td class="text-center">
+                {{subProducto.precio |currency}}
+              </td>
+              <td class="d-flex">
+                <button class="btn btn-success">
+                  <a class="boton-catalogo" [routerLink]="['/subproductos/costeo',subProducto._id]">
+                    <i class="fas fa-dollar-sign"></i>
+                  </a>
+                </button>
+                <button class="btn btn-primary">
+                  <a class="boton-catalogo" [routerLink]="['/subproductos/editar',subProducto._id]">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </button>
+                <button class="btn btn-danger">
+                  <a class="boton-catalogo" (click)="eliminarSubProducto(subProducto)">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button (click)="anterior()" class="btn btn-secondary mr-2">
+          Anterior
+        </button>
+        <button (click)="siguiente()" class="btn btn-secondary">
+          Siguiente
+        </button>
+
+      </div>
+    </div>
+  </div>
+</div>

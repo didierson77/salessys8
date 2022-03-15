@@ -1,0 +1,275 @@
+<div class="col pt-2">
+
+  <div *ngIf="producto" class="row">
+    <div class="col-12">
+      <div class="card">
+        <h3 class="card-header">
+          Costo de <h4 class="badge badge-success" *ngIf="producto!.subProducto"> Sub Producto </h4>
+          <h4 class="badge badge-danger" *ngIf="!producto!.subProducto"> Producto </h4> :
+          <small *ngIf="producto" class="text-muted"> {{producto!.descripcion}}, {{producto!.categoria!.descripcion}}
+          </small>
+
+        </h3>
+
+        <div class="card-body mt-1">
+          <div class="bd-example">
+            <form ngNativeValidate [formGroup]="forma" (ngSubmit)="guardar()">
+              <div class="form-row">
+
+                <div class="form-group col-md-4">
+                  <label for="claveProd">Descripción</label>
+                  <select class="form-control" formControlName="claveProd" name="claveProd">
+                    <!-- <option>Seleccione una Categoria</option> -->
+                    <option value="" selected hidden>Seleccione Materia Prima...</option>
+                    <option *ngFor="let materia of materias" [value]="materia._id">{{materia.descripcion}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="cantidad">Cantidad</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="cantidad" #txtcosto name="cantidad" type="number" class="form-control"
+                      id="cantidad" placeholder="" min="0" step="any">
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="unidadMedida">Unidad de Medida</label>
+                  <input formControlName="unidadMedida" name="unidadMedida" type="text" class="form-control"
+                    placeholder="Unidad de Medida" readonly>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                  <label for="precio">Precio</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="precio" #txtcosto name="precio" type="number" class="form-control"
+                      id="precio" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                  <label for="importe">Importe</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="importe" #txtcosto name="importe" type="number" class="form-control"
+                      id="precio" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="form-row mt-2">
+                <button type="button" id="btn-agregar" (click)="agregar()" class="btn btn-success mr-5">
+                  <i class="fas fa-plus"></i>
+                  Agregar
+                </button>
+
+                <!-- <button type="submit" class="btn btn-primary"> -->
+                <!-- <i class="fas fa-save"></i> -->
+                <!-- Guardar -->
+                <!-- </button> -->
+
+                <button type="button" (click)="imprimir()" class="btn btn-primary ml-5">
+                  <i class="fas fa-print"></i>
+                  Imprimir
+                </button>
+
+              </div>
+
+              <hr>
+
+              <div class="form-row mt-2 d-flex align-items-center">
+
+                <div class="form-group col-md-3">
+                  <label for="costoTotal">Costo Materia Prima</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="costoMateria" #txtcosto name="costoMateria" type="number"
+                      class="form-control" id="costoMateria" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="costoTotal">Mano de Obra</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="manoObra" #txtcosto name="manoObra" type="number" class="form-control"
+                      id="costoTotal" placeholder="" min="0" step="any">
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="costoTotal">Costo Total</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="costoTotal" #txtcosto name="costoTotal" type="number" class="form-control"
+                      id="costoTotal" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+                <button type="button" id="btnManoObra" (click)="manoObra()" class="btn btn-success btn-sm ml-2 mt-3">
+                  <i class="fas fa-plus"></i>
+                  Mano de Obra
+                </button>
+
+
+              </div>
+
+              <div class="form-row mt-2 d-flex align-items-center">
+
+                <div class="form-group col-md-3">
+                  <label for="unidades">Unidades por Medida</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-boxes"></span>
+                      </button>
+                    </span>
+                    <input formControlName="unidades" #txtcosto name="unidades" type="number" class="form-control"
+                      id="unidades" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group col-md-3">
+                  <label for="unidades">Costo por {{producto?.unidadMedida }} </label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="costoUnidad" #txtcosto name="costoUnidad" type="number" class="form-control"
+                      id="unidadMedida" placeholder="" readonly>
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="unidades">lat </label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="lat" #txtcosto name="lat" type="number" class="form-control" id="lat"
+                      placeholder="" readonly>
+                  </div>
+                </div>
+
+              </div>
+
+
+            </form>
+          </div>
+
+
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-header">
+          Materias Primas:
+          <small *ngIf="producto" class="text-muted">
+          </small>
+        </h3>
+        <div class="card-body">
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="align-middle">Cantidad</th>
+                <th class="align-middle">Unidad de Medida</th>
+                <th class="align-middle text-center">Descripción</th>
+                <th class="align-middle text-center">Precio</th>
+                <th class="align-middle text-center">importe</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let formu of formulacion">
+                <td>
+                  {{formu.cantidad}}
+                </td>
+                <td class="text-center">
+                  {{formu.elemento?.unidadMedida}}
+                </td>
+                <td class="text-center">
+                  <!-- {{formu.descripcion}} -->
+                  {{formu.elemento?.descripcion}}
+                </td>
+                <td class="text-center">
+                  {{formu.elemento?.costoxUnidad|currency}}
+                  <!-- {{formu.costoxUnidad|currency}} -->
+                </td>
+                <td class="text-center">
+                  {{ formu.importe |currency}}
+                  <!-- {{formu.importe|currency}} -->
+                </td>
+                <td class="d-flex">
+                  <button class="btn btn-danger">
+                    <a class="boton-catalogo" (click)="eliminar(formu.idFormula)">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+          <!-- <p *ngFor="let formu of formula"> {{formu.descripcion}}</p> -->
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="salida">
+    <p>Hola</p>
+  </div>
+
+
+  <div id="mapa" #mapa>
+
+  </div>
+
+</div><!-- Main Col END -->

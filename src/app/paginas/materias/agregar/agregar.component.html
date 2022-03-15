@@ -1,0 +1,88 @@
+<div class="col-12">
+
+  <div class="card mt-3">
+    <h4 class="card-header"> Agregar Materia Prima</h4>
+    <div class="card-body">
+
+
+      <div class="bd-example pt-3">
+        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="guardar()">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="descripcion">Descripción</label>
+              <input formControlName="descripcion" required name="descripcion" type="text" class="form-control"
+                id="descripcion" placeholder="Descripción">
+            </div>
+            <div class="form-group col-md-4">
+              <label for="empaque">Empaque</label>
+              <input formControlName="empaque" name="empaque" type="text" class="form-control" id=""
+                placeholder="Empaque">
+            </div>
+            <div class="form-group col-md-3">
+              <label for="cantxemp">Cant/Empaque</label>
+              <input formControlName="cantidadxEmpaque" name="cantidadxEmpaque" type="number" class="form-control"
+                #unidadxEmpaque (change)="calcular()" (keyup)="calcular()" id="cantxemp" placeholder="" min="1"
+                step="any">
+            </div>
+          </div>
+
+          <div class="form-row">
+
+            <div class="form-group col-md-4">
+              <label for="unidadMedida">Unidad Medida</label>
+              <input formControlName="unidadMedida" name="unidadMedida" type="text" class="form-control"
+                id="unidadMedida" placeholder="Unidad de Medida">
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="costo">Costo</label>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button id="" class="btn btn-primary" type="button">
+                    <span class="fas fa-dollar-sign"></span>
+                  </button>
+                </span>
+                <input formControlName="costo" #txtcosto name="costo" type="number" (keyup)="calcular()"
+                  (change)="calcular()" class="form-control" id="costo" placeholder="" min="0" step="any">
+              </div>
+            </div>
+
+            <div class="form-group col-md-3">
+              <label for="costo">Costo por Unidad</label>
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button id="" class="btn btn-primary" type="button">
+                    <span class="fas fa-dollar-sign"></span>
+                  </button>
+                </span>
+                <input type="number" formControlName="costoxUnidad" name="costoxUnidad" class="form-control"
+                  id="costoUnidad" placeholder="" min="0" step="any" readonly="true">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="costo">Fotografia de Materia Prima</label>
+              <div class="input-group">
+                <img src="" alt="">
+                <input type="file" class="form-control" id="foto">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-save"></i>
+              Guardar
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- Main Col END -->

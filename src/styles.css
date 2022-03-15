@@ -1,1 +1,395 @@
-/* You can add global styles to this file, and also import other style files */
+/* @import url("https://use.fontawesome.com/releases/v5.13.0/css/all.css");
+*/
+@import url("https://use.fontawesome.com/releases/v5.14.0/css/all.css");
+
+.logo {
+  padding: .875rem 1.25rem;
+  color: var(--ligth);
+}
+
+.radio-etiqueta {
+  color: #05152e !important;
+}
+
+.imagen-user {
+  height: 50px;
+  width: 50px;
+  /* los siguientes valores son independientes del tamaño del círculo */
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 50%;
+  background-size: 100% auto;
+  margin-right: 5px;
+}
+
+/* body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+} */
+
+#body-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#sidebar-container {
+  min-height: 100vh;
+  background-color: #333;
+  padding: 0;
+  /* width: 190px; */
+}
+
+.centrado {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+  width: 190px;
+}
+
+.sidebar-collapsed {
+  width: 100px;
+}
+
+.sidebar-submenu {
+  font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+  background-color: #333;
+  height: 35px;
+}
+
+.sidebar-separator {
+  background-color: #333;
+  height: 25px;
+}
+
+.logo-separator {
+  background-color: #333;
+  height: 60px;
+}
+
+.sidebar-expanded {
+  left: -200px !important;
+  margin: 0;
+  padding: 0;
+}
+
+
+.list-group-item img {
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  height: 45px;
+  width: 45px;
+  /* padding: 5px 5px; */
+}
+
+.toggle-btn {
+  cursor: pointer;
+}
+
+.toggle-btn span {
+  /* left: 216px; */
+  text-align: center;
+  display: block;
+  width: 25px;
+  font-size: 14px;
+  color: #fff;
+  border: 1px solid rgb(253, 252, 252);
+  border-radius: 3px;
+}
+
+.colapsado {
+  /* left: 10px; */
+  text-align: center;
+  display: block;
+  width: 25px;
+  font-size: 20px;
+  border: 1px solid rgba(255, 255, 255);
+  border-radius: 3px;
+}
+
+
+/* Menu item*/
+#sidebar-container .list-group a {
+  height: 50px;
+  color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+  height: 45px;
+  padding-left: 30px;
+}
+
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+  content: " \f0d7";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+  content: " \f0da";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+
+/* #sidebar1 {
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  background-color: #001d4d;
+  width: 200px;
+  left: -200px;
+} */
+
+#sidebar1.active {
+  left: 0px;
+}
+
+#sidebar1 li {
+  list-style: none;
+  padding: 10px 25px;
+  border: 1px solid #001d4d;
+  color: aliceblue;
+}
+
+
+/************************************************/
+/************************************************/
+/************************************************/
+/* ***************    LOGIN    ******************/
+/************************************************/
+/************************************************/
+/************************************************/
+/* Coded with love by Mutiullah Samim */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-size: 14px;
+}
+
+/* table{
+  width: ;
+} */
+
+
+.user_card {
+  height: 400px;
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #05152e;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+
+}
+
+
+.user_card1 {
+  height: 500px;
+  width: 350px;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #05152e;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+
+
+
+.brand_logo_container {
+  position: absolute;
+  height: 170px;
+  width: 170px;
+  top: -75px;
+  border-radius: 50%;
+  /* background: #60a3bc; */
+  padding: 10px;
+  text-align: center;
+}
+
+.brand_logo {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+.form_container {
+  margin-top: 100px;
+}
+
+.login_btn {
+  width: 100%;
+  background: #0142a3 !important;
+  color: white !important;
+}
+
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.login_container {
+  padding: 0 2rem;
+}
+
+.input-group-text {
+  background: #0142a3 !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+  background-color: #0142a3 !important;
+}
+
+.links {
+  color: white !important;
+}
+
+.custom-control-label {
+  color: white !important;
+}
+
+.boton-catalogo {
+  color: white;
+  text-decoration: none;
+}
+
+.boton-catalogo:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.vista-previa {
+  width: 150px;
+  height: auto;
+}
+
+.miniatura {
+  width: auto;
+  height: 40px;
+}
+
+.menu-collapsed {
+  font-size: 14px;
+}
+
+
+/********************BOTON MANO DE OBRA*****************************************************/
+#btnManoObra {
+
+  height: 30px;
+  /* align-items: center; */
+}
+
+
+/*********************************************************************************************/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+/*************************************************************************************************/
+/************ ESTILO DEL MAPA **********************************/
+#mapa {
+  width: 350px;
+  height: 350px;
+  background-color: #05152e;
+}

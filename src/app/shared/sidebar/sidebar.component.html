@@ -1,0 +1,93 @@
+<!-- <div class="col"> -->
+<div id="sidebar-container" class="sidebar-expanded d-none d-lg-block">
+  <!-- d-* hiddens the Sidebar in smaller devices. Its itens can be kept on the Navbar 'Menu' -->
+  <!-- Bootstrap List Group -->
+  <ul class="list-group">
+
+    <div class="btn toggle-btn d-none d-lg-block collapse-icon">
+      <span>&#9776;</span>
+    </div>
+    <!-- Logo -->
+    <li class="list-group-item logo-separator d-flex justify-content-center">
+      <img [src]="usuario.img! | imagen" />
+    </li>
+    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+      <small>{{ usuario.nombre }}</small>
+    </li>
+    <a (click)="this._usuarioService.logout()" class="bg-dark list-group-item list-group-item-action">
+      <div class="d-flex w-100 justify-content-start align-items-center">
+        <span class="fas fa-power-off fa-fw mr-3"></span>
+        <span class="menu-collapsed">Cerrar Sesión</span>
+      </div>
+    </a>
+
+
+    <!-- Separator with title -->
+    <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+      <small>MENÚ PRINCIPAL</small>
+    </li>
+    <!-- /END Separator -->
+
+    <!-- Menu with submenu -->
+    <div *ngFor="let item of _sidebar.menuItems; let i = index">
+      <a href="#submenu{{i}}" data-toggle="collapse" aria-expanded="false"
+        class="bg-dark list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+          <span class="{{item.icono}} mr-3"></span>
+          <span class="menu-collapsed">{{item.nombre}}</span>
+          <span *ngIf="item.submenu?.length" class="submenu-icon ml-auto"></span>
+        </div>
+      </a>
+      <!-- Submenu content -->
+      <div *ngIf="item.submenu?.length" id='submenu{{i}}' class="collapse sidebar-submenu">
+        <div *ngFor="let submenu of item.submenu">
+          <a href="#" [routerLink]=[submenu.ruta] routerLinkActive="active"
+            class="list-group-item list-group-item-action bg-dark text-white">
+            <span class="menu-collapsed opcion-submenu">{{submenu.nombre}}</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <a href="#" class="bg-dark list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+          <span class="fa fa-tasks fa-fw mr-3"></span>
+          <span class="menu-collapsed">Tareas</span>
+        </div>
+      </a> -->
+
+    <!-- Separator without title -->
+    <!-- <li class="list-group-item sidebar-separator menu-collapsed"></li> -->
+    <!-- /END Separator -->
+
+    <!-- <a href="#" data-toggle="sidebar-colapse"
+        class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+          <span id="collapse-icon" class="fa fa-2x mr-3"></span>
+          <span id="collapse-text" class="menu-collapsed">Collapse</span>
+        </div>
+      </a> -->
+
+  </ul><!-- List Group END-->
+</div><!-- sidebar-container END -->
+
+
+<!--
+  <div id="sidebar1" class="active d-none d-lg-block">
+    <div class="toggle-btn">
+      <span>&#9776;</span>
+    </div>
+
+    <ul>
+      <li>
+        <img src="//src/assets/img/AdminLTELogo.png" alt="Logo">
+      </li>
+      <li>Home</li>
+      <li>Contacto</li>
+      <li>Acerca de</li>
+    </ul>
+  </div> -->
+
+
+<!-- </div> -->

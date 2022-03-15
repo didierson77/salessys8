@@ -1,0 +1,175 @@
+<div class="col pt-2">
+
+  <div *ngIf="subProducto" class="row">
+    <div class="col-12">
+      <div class="card">
+        <h3 class="card-header">
+          Costo de SubProducto:
+          <small *ngIf="subProducto" class="text-muted"> {{subProducto!.descripcion}}
+          </small>
+        </h3>
+
+        <div class="card-body mt-1">
+          <div class="bd-example">
+            <form ngNativeValidate [formGroup]="forma" (ngSubmit)="guardar()">
+              <div class="form-row">
+
+                <div class="form-group col-md-4">
+                  <label for="claveProd">Descripción</label>
+                  <select class="form-control" formControlName="claveProd" name="claveProd">
+                    <!-- <option>Seleccione una Categoria</option> -->
+                    <option value="" selected hidden>Seleccione Materia Prima...</option>
+                    <option *ngFor="let materia of materias" [value]="materia._id">{{materia.descripcion}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="cantidad">Cantidad</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="cantidad" #txtcosto name="cantidad" type="number" class="form-control"
+                      id="cantidad" placeholder="" min="1" step="any">
+                  </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="unidadMedida">Unidad de Medida</label>
+                  <input formControlName="unidadMedida" name="unidadMedida" type="text" class="form-control"
+                    placeholder="Unidad de Medida" readonly>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                  <label for="precio">Precio</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="precio" #txtcosto name="precio" type="number" class="form-control"
+                      id="precio" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+
+                <div class="form-group col-md-3">
+                  <label for="importe">Importe</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="importe" #txtcosto name="importe" type="number" class="form-control"
+                      id="precio" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+
+              </div>
+
+
+              <div class="form-row mt-2">
+                <button type="button" id="btn-agregar" (click)="agregar()" class="btn btn-success mr-5">
+                  <i class="fas fa-plus"></i>
+                  Agregar
+                </button>
+
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-save"></i>
+                  Guardar
+                </button>
+
+              </div>
+
+              <hr>
+              <div class="form-row mt-3 ">
+                <div class="form-group col-md-3">
+                  <label for="costoTotal">Costo Total</label>
+                  <div class="input-group">
+                    <span class="input-group-btn">
+                      <button id="" class="btn btn-primary" type="button">
+                        <span class="fas fa-dollar-sign"></span>
+                      </button>
+                    </span>
+                    <input formControlName="costoTotal" #txtcosto name="costoTotal" type="number" class="form-control"
+                      id="costoTotal" placeholder="" min="0" step="any" readonly>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </div>
+
+
+
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-header">
+          MateriasPrimas:
+          <small *ngIf="formula" class="text-muted">
+          </small>
+        </h3>
+        <div class="card-body">
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="align-middle">Cantidad</th>
+                <th class="align-middle">Unidad de Medida</th>
+                <th class="align-middle text-center">Descripción</th>
+                <th class="align-middle text-center">Precio</th>
+                <th class="align-middle text-center">importe</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let formu of formula">
+                <td>
+                  {{formu.cantidad}}
+                </td>
+                <td class="text-center">
+                  {{formu.unidadMedida}}
+                </td>
+                <td class="text-center">
+                  {{formu.descripcion}}
+                </td>
+                <td class="text-center">
+                  {{formu.costoxUnidad|currency}}
+                </td>
+                <td class="text-center">
+                  {{formu.importe|currency}}
+                </td>
+                <td class="d-flex">
+                  <button class="btn btn-danger">
+                    <a class="boton-catalogo" (click)="eliminar(formu.claveProd)">
+                      <i class="fas fa-trash"></i>
+                    </a>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+
+          <!-- <p *ngFor="let formu of formula"> {{formu.descripcion}}</p> -->
+
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- Main Col END -->

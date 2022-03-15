@@ -1,0 +1,87 @@
+<div class="row mt-2">
+  <div class="col-md-12  col-lg-8">
+    <div class="card">
+      <div class="card-body">
+        <input #input (keyup)="buscar(input.value)" type="text" class="form-control" placeholder="Buscar Categorías">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12  col-lg-8">
+    <div *ngIf="cargando" class=" alert alert-warning text-center">
+      <strong>
+        Cargando
+      </strong>
+      <br>
+      <i class="fas fa-sync-alt fa-spin fa-2x"></i>
+      <br>
+      <span>Espere por favor..</span>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+
+        <div class="text-right">
+          <button (click)="crearCategoria()" type="button" class="btn btn-success">
+            <a class="boton-catalogo">
+              <i class="fas fa-plus"></i>
+              Categoria
+            </a>
+          </button>
+        </div>
+
+
+        <h3 class="card-title">Categorías (<small>{{totalRegistros}}</small>)</h3>
+        <table *ngIf="!cargando" class="table table-hover">
+          <thead>
+            <tr>
+
+              <th class="align-middle">Descripción</th>
+              <th class="align-middle text-center">Activo</th>
+              <th class="align-middle"></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let categoria of categorias">
+
+              <td>
+                {{categoria.descripcion}}
+              </td>
+              <td class="text-center">
+                <h5 *ngIf="categoria.activo" class="badge badge-success">Si</h5>
+                <h5 *ngIf="!categoria.activo" class="badge badge-danger">No</h5>
+              </td>
+
+              <td class="d-flex">
+                <button class="btn btn-primary">
+                  <a class="boton-catalogo" [routerLink]="['/materias/editar',categoria._id]">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                </button>
+                <button class="btn btn-danger">
+                  <a class="boton-catalogo" (click)="eliminarCategoria(categoria)">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <button (click)="anterior()" class="btn btn-secondary mr-2">
+          Anterior
+        </button>
+        <button (click)="siguiente()" class="btn btn-secondary">
+          Siguiente
+        </button> -->
+
+      </div>
+    </div>
+  </div>
+</div>

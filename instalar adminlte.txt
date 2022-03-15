@@ -1,0 +1,29 @@
+
+1.- npm install admin-lte --save (como administrador, en powershell)
+
+2.- cambiar angular.json
+
+            "styles": [
+              "src/styles.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "./node_modules/overlayscrollbars/css/OverlayScrollbars.min.css",
+              "./node_modules/admin-lte/dist/css/adminlte.min.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "./node_modules/overlayscrollbars/js/jquery.overlayScrollbars.min.js",
+              "./node_modules/admin-lte/dist/js/adminlte.js",
+              "./node_modules/jquery-mousewheel/jquery.mousewheel.js",
+              "./node_modules/raphael/raphael.min.js",
+              "./node_modules/jquery-mapael/js/jquery.mapael.min.js",
+              "./node_modules/jquery-mapael/js/maps/usa_states.min.js",
+              "./node_modules/chart.js/dist/Chart.min.js",
+              "./node_modules/admin-lte/dist/js/demo.js",
+              "./node_modules/admin-lte/dist/js/pages/dashboard2.js"
+            ]
+
+
+3.- copiar imagenes de adminlte a assets
+
+4.- cambiar ruta de las imagenes
